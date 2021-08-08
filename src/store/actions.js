@@ -1,40 +1,41 @@
 import {
-    fetchNewsList,
-    fetchJobsList,
-    fetchAskList,
+    // fetchNewsList,
+    // fetchJobsList,
+    // fetchAskList,
+    fetchList,
     fetchUserInfo,
-    fetchItemInfo,
-    fetchCommentItem
+    fetchCommentItem,
 } from '../api/index.js';
 
 export default{
-    FETCH_NEWS({ commit }) {
-            fetchNewsList()
-                .then(({ data }) => {
-                    commit('SET_NEWS', data);
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        },
-    FETCH_JOBS({ commit }) {
-        fetchJobsList()
-            .then(({ data }) => {
-                commit('SET_JOBS', data);
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    },
-    FETCH_ASK({ commit }) {
-        fetchAskList()
-            .then(({ data }) => {
-                commit('SET_ASK', data);
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    },
+    // FETCH_NEWS({ commit }) {
+    //         fetchNewsList()
+    //             .then(({ data }) => {
+    //                 commit('SET_NEWS', data);
+    //                 return response;
+    //             })
+    //             .catch(error => {
+    //                 console.log(error);
+    //             })
+    //     },
+    // FETCH_JOBS({ commit }) {
+    //     fetchJobsList()
+    //         .then(({ data }) => {
+    //             commit('SET_JOBS', data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // },
+    // FETCH_ASK({ commit }) {
+    //     fetchAskList()
+    //         .then(({ data }) => {
+    //             commit('SET_ASK', data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // },
     FETCH_USER({ commit }, name) {
         fetchUserInfo(name)
             .then(({ data }) => {
@@ -52,5 +53,10 @@ export default{
             .catch(error => {
                 console.log(error)
             })
+    },
+    FETCH_LIST({ commit }, pageName) {
+        fetchList(pageName)
+            .then(({ data }) => commit('SET_LIST', data))
+            .catch(error => console.log(error));
     }
 }
