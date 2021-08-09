@@ -1,43 +1,42 @@
 import {
-    // fetchNewsList,
-    // fetchJobsList,
-    // fetchAskList,
+    fetchNewsList,
+    fetchJobsList,
+    fetchAskList,
     fetchList,
     fetchUserInfo,
     fetchCommentItem,
 } from '../api/index.js';
 
 export default{
-    // FETCH_NEWS({ commit }) {
-    //         fetchNewsList()
-    //             .then(({ data }) => {
-    //                 commit('SET_NEWS', data);
-    //                 return response;
-    //             })
-    //             .catch(error => {
-    //                 console.log(error);
-    //             })
-    //     },
-    // FETCH_JOBS({ commit }) {
-    //     fetchJobsList()
-    //         .then(({ data }) => {
-    //             commit('SET_JOBS', data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // },
-    // FETCH_ASK({ commit }) {
-    //     fetchAskList()
-    //         .then(({ data }) => {
-    //             commit('SET_ASK', data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // },
+    FETCH_NEWS({ commit }) {
+        return fetchNewsList()
+            .then(({ data }) => {
+                commit('SET_NEWS', data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
+    FETCH_JOBS({ commit }) {
+        return fetchJobsList()
+            .then(({ data }) => {
+                commit('SET_JOBS', data);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },
+    FETCH_ASK({ commit }) {
+        return fetchAskList()
+            .then(({ data }) => {
+                commit('SET_ASK', data);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },
     FETCH_USER({ commit }, name) {
-        fetchUserInfo(name)
+        return fetchUserInfo(name)
             .then(({ data }) => {
                 commit('SET_USER', data);
             })
@@ -46,7 +45,7 @@ export default{
             })
     },
     FETCH_ITEM({ commit }, id) {
-        fetchCommentItem(id)
+        return fetchCommentItem(id)
             .then(({ data }) => {
                 commit('SET_ITEM', data);
             })
@@ -55,8 +54,11 @@ export default{
             })
     },
     FETCH_LIST({ commit }, pageName) {
-        fetchList(pageName)
-            .then(({ data }) => commit('SET_LIST', data))
+        return fetchList(pageName)
+            .then(response => {
+                commit('SET_LIST', response.data);
+                return response;
+            })
             .catch(error => console.log(error));
     }
 }
