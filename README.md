@@ -1,7 +1,7 @@
 # vue-news
 
 ```
-inflearn vue.js 중급 강좌
+inflearn vue.js 완벽 가이드
 ```
 
 ## Project setup
