@@ -1,5 +1,7 @@
 # vue-news
 
+## inflearn vue.js 중급 강좌
+
 ## Project setup
 ```
 npm install
